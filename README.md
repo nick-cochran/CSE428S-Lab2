@@ -65,7 +65,7 @@
 
 - The previous lab instructed me to print the hands and deal the hands inside of the play method,
     but I felt it important to note that I did this slightly differently.  In order to properly
-    print the board before the state of the board changed, I called the printBoard method inside of 
+    print the board before the state of the board changed, I called the print_board method inside of 
     the deal method.
 
 ### CardSet Copy Constructor
