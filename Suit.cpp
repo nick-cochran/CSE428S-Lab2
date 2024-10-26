@@ -16,16 +16,16 @@ using namespace std;
 ostream& operator<<(ostream &ost, const Suit &suit) {
     switch (suit) {
         case Suit::clubs:
-            ost << "C";
+            ost << CLUB;
             return ost;
         case Suit::diamonds:
-            ost << "D";
+            ost << DIAMOND;
             return ost;
         case Suit::hearts:
-            ost << "H";
+            ost << HEART;
             return ost;
         case Suit::spades:
-            ost << "S";
+            ost << SPADE;
             return ost;
         default:
             ost << "?";

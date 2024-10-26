@@ -10,8 +10,6 @@
 
 #include "HoldEmDeck.h"
 
-using namespace std;
-
 
 // pushes back cards into the cards vector for the HoldEmDeck class
 HoldEmDeck::HoldEmDeck() {

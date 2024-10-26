@@ -1,5 +1,5 @@
 /*
- * lab0.cpp
+ * lab2.cpp
  *
  * Nick Cochran
  * email: c.nick@wustl.edu
@@ -23,12 +23,16 @@ shared_ptr<Game> create(int argc, const char **argv);
 
 // main function to run the code
 int main(int argc, const char **argv) {
+
     string game_name = argv[GAME_NAME];
 
     if (argc < 2) {
         cout << "Error: not enough arguments" << endl;
         return usage();
     }
+
+
+
     if(game_name != "Pinochle" && game_name != "HoldEm") {
         cout << "Error: invalid game name" << endl;
         return usage();
@@ -55,7 +59,7 @@ int main(int argc, const char **argv) {
 
 // usage function to return with bad arguments
 int usage() {
-    cout << "Usage: ./lab1 <game_name> {player1}, {player2}, ..." << endl;
+    cout << "Usage: ./lab2 <game_name> {player1}, {player2}, ..." << endl;
     return INVALID_PROGRAM_ARGUMENTS;
 }
 

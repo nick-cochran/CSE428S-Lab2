@@ -105,28 +105,3 @@ void HoldEmGame::collectCards() {
         deck.collect(hand);
     }
 }
-
-
-
-
-
-// prefix increment operator for HoldEmState enum
-//HoldEmState& operator++(HoldEmState& state) {
-//    switch (state) {
-//        case HoldEmState::preflop:
-//            state = HoldEmState::flop;
-//            return state;
-//        case HoldEmState::flop:
-//            state = HoldEmState::turn;
-//            return state;
-//        case HoldEmState::turn:
-//            state = HoldEmState::river;
-//            return state;
-//        case HoldEmState::river:
-//            state = HoldEmState::undefined;
-//            return state;
-//        default:
-//            state = HoldEmState::undefined;
-//            return state;
-//    }
-//}

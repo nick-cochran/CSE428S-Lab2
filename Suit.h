@@ -13,6 +13,12 @@
 
 #include "includes.h"
 
+// color thanks to: https://stackoverflow.com/questions/2616906/how-do-i-output-coloured-text-to-a-linux-terminal
+const string HEART  = "\033[31m\u2665\033[0m";  //♥
+const string DIAMOND = "\033[31m\u2666\033[0m";  //♦
+const string CLUB   = "\u2663";  //♣
+const string SPADE  = "\u2660";  //♠
+
 enum class Suit {clubs, diamonds, hearts, spades, undefined};
 const Suit firstSuit = Suit::clubs;
 
