@@ -18,8 +18,11 @@ void CardSet<Suit, Rank>::print(std::ostream &ost, size_t size) {
         count++;
         ost << card << " ";
         if(count >= size) {
+            // only add a new line when not at the end of the vector
+            if(count != cards.size()) {
+                ost << endl;
+            }
             count = 0;
-            ost << endl;
         }
     }
 }

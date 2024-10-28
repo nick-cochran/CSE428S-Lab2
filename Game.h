@@ -14,7 +14,7 @@ const int FIRST_PLAYER = 2;
 // abstract Game class
 class Game {
  protected:
-    vector<string> players;
+    vector<string> player_names;
     static int askToEndGame();
  public:
     Game(int argc, const char **argv);

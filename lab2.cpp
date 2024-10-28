@@ -17,34 +17,32 @@
 using namespace std;
 
 int main(int argc, const char **argv);
-int usage();
+int usage(const char **argv);
 shared_ptr<Game> create(int argc, const char **argv);
 
 
 // main function to run the code
 int main(int argc, const char **argv) {
 
-    string game_name = argv[GAME_NAME];
-
     if (argc < 2) {
         cout << "Error: not enough arguments" << endl;
-        return usage();
+        return usage(argv);
     }
 
-
+    string game_name = argv[GAME_NAME];
 
     if(game_name != "Pinochle" && game_name != "HoldEm") {
         cout << "Error: invalid game name" << endl;
-        return usage();
+        return usage(argv);
     }
     if(game_name == "Pinochle" && argc != (INPUTS_PRE_PLAYERS + PINOCHLE_REQUIRED_PLAYERS)) {
-        cout << "Error: There must be four players to play Pinochle." << endl;
-        return usage();
+        cout << "Error: There must be 4 players to play Pinochle." << endl;
+        return usage(argv);
     }
     if(game_name == "HoldEm" && (argc < (INPUTS_PRE_PLAYERS + HOLDEM_MIN_PLAYERS)
             || argc > (INPUTS_PRE_PLAYERS + HOLDEM_MAX_PLAYERS))) {
         cout << "Error: There must be between 2 and 9 players to play HoldEm." << endl;
-        return usage();
+        return usage(argv);
      }
 
     shared_ptr<Game> game = create(argc, argv);
@@ -58,8 +56,8 @@ int main(int argc, const char **argv) {
 }
 
 // usage function to return with bad arguments
-int usage() {
-    cout << "Usage: ./lab2 <game_name> {player1}, {player2}, ..." << endl;
+int usage(const char **argv) {
+    cout << "Usage: " << argv[PROGRAM_NAME] << " <\033[3mPinochle\033[0m | \033[3mHoldEm\033[0m> {player1}, {player2}, ..." << endl;
     return INVALID_PROGRAM_ARGUMENTS;
 }
 

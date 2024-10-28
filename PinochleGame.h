@@ -8,7 +8,6 @@
 #include "includes.h"
 #include "Game.h"
 #include "PinochleDeck.h"
-#include <map>
 
 enum class PinochleMeld : unsigned int {
     dix, off_suit_marriage, forty_jacks, pinochle, in_suit_marriage, sixty_queens,

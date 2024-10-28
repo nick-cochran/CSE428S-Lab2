@@ -35,7 +35,7 @@ PinochleGame::PinochleGame(int argc, const char **argv): Game(argc, argv) {
     }
 }
 
-// deal out the cards to all players
+// deal out the cards to all player_names
 void PinochleGame::deal() {
     // deal a packet to each player until deck is empty
     while(!deck.is_empty()) {
@@ -48,13 +48,14 @@ void PinochleGame::deal() {
 void PinochleGame::print_hands_and_melds(ostream &ost) {
     for(long unsigned int i = 0; i < hands.size(); ++i) {
 
-        ost << "Player " << players[i] << " has hand: " << endl;
+        ost << "Player " << player_names[i] << " has hand: " << endl;
         hands[i].print(ost, PINOCHLE_HAND_SIZE);
 
         // find melds after printing the player's hand
         vector<PinochleMeld> melds = vector<PinochleMeld>();
         suit_independent_eval(hands[i], melds);
-        ost << players[i] << "'s " "melds: ";
+        ost << endl;
+        ost << player_names[i] << "'s " "melds: ";
         for(PinochleMeld meld : melds) {
             ost << meld << " ";
         }

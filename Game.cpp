@@ -7,7 +7,7 @@
 Game::Game(int argc, const char **argv) {
 
     for(int i = FIRST_PLAYER; i < argc; i++) {
-        players.push_back(argv[i]);
+        player_names.push_back(argv[i]);
     }
 }
 

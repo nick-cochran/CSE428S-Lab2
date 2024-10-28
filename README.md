@@ -6,6 +6,16 @@
 
 ---
 
+## Errors
+
+- I ran into a few warnings that were being thrown because I did not have a copy-assignment operator
+    when I did have a copy constructor, so I needed to tell the compiler to default initialize
+    the copy-assignment operator.
+- As I started testing HoldEm hand ranks I saw: "p9 has hand: 9♣ 3♣ 8♠ 10♠ 7♦ --> This has a rank of Pair"
+    which is clearly not true so this was an error that I needed to fix.
+    The problem was that I was using the postfix operator to set an iterator that keeps track of the
+    next card in the hand so the program was double counting the first card in the hand.
+
 ## Testing
 
 ### Pinochle Melds
@@ -51,6 +61,45 @@
     p4's melds: eight hundred kings 800 
     - Of note: This took a (probably broken) script and a long time to get.
 
+## Hold Em Ranks
+
+- I first tested that the program would find every hand rank by repeatedly running the program.
+    Below I have listed the first instance of each hand rank that I encountered.
+  - **X High:** p1 has hand: A♦ 5♦ 7♥ 9♣ 6♣ --> This has a rank of High Card
+  - **Pair:** p4 has hand: 7♦ 4♠ 2♦ 6♣ 6♠ --> This has a rank of Pair 
+  - **Two Pair:** p5 has hand: 5♦ 2♥ 2♦ 6♣ 6♠ --> This has a rank of Two Pair 
+  - **Three of A Kind:** p5 has hand: 5♥ 9♥ 7♦ 5♠ 5♦ --> This has a rank of Three of a Kind
+  - **Straight:** p2 has hand: 7♠ 8♥ 10♥ 9♥ 6♥ --> This has a rank of Straight
+  - **Flush:** p5 has hand: 9♥ 3♥ K♥ 4♥ J♥ --> This has a rank of Flush 
+  - **Full House:** p4 has hand: J♣ 8♥ J♦ 8♦ 8♣ --> This has a rank of Full House
+  - **Four of A Kind** and **Straight Flush** are both very rare, but use the same functionality
+    as other hand ranks that have had correct results, so I am using that information to assess
+    that these two should be working as well.
+- I also tested that the hands were printed using the correct ordering while, finding those
+    hand ranks from the previous step.  Here is an example of the correct ordering from a few runs:
+  - p2 has hand: J♦ 10♠ Q♦ 9♦ K♥ --> This has a rank of Straight 
+    
+    p3 has hand: A♥ K♦ Q♦ 9♦ K♥ --> This has a rank of Pair 
+
+    p7 has hand: Q♥ 2♦ Q♦ 9♦ K♥ --> This has a rank of Pair 
+    
+    p4 has hand: J♠ J♥ Q♦ 9♦ K♥ --> This has a rank of Pair 
+    
+    p6 has hand: 8♠ 9♥ Q♦ 9♦ K♥ --> This has a rank of Pair 
+    
+    p9 has hand: 8♦ 9♠ Q♦ 9♦ K♥ --> This has a rank of Pair 
+
+    p1 has hand: 2♥ A♣ Q♦ 9♦ K♥ --> This has a rank of High Card 
+    
+    p8 has hand: A♠ 3♣ Q♦ 9♦ K♥ --> This has a rank of High Card 
+    
+    p5 has hand: 7♥ 4♥ Q♦ 9♦ K♥ --> This has a rank of High Card 
+
+## Overall Program Testing
+
+- Most of this testing was done in the previous part of the lab, but I re-tested that 
+    incorrect inputs of all kinds, including but not limited to the wrong number of players
+    an incorrect game name, and no inputs being provided.
 
 
 ## Design Choices
@@ -99,35 +148,44 @@
     because I felt it would be more complicated and difficult to follow with the way I had implemented it,
     and the requirements for breaking something off into a separate function.
 
+### HoldEm Hand Evaluation Function
+
+- I decided this function should work fairly differently from the previous function.  This time
+    I did sort the hands and then I used 3 helper functions to determine if it is a straight,
+    a flush, and how many similar ranks there are in each hand.  The last of these helper functions
+    returns a vector of integers that will have the size of the largest grouping of cards
+    with the same rank and then going down from there.  This allows me to determine all hand ranks
+    that include multiple cards of the same rank or multiple sets of cards of the same rank.
+
+### HoldEm Player Struct < Operator
+
+- I decided it would be beneficial to once again sorted copies of the hands of both player_names.
+    I also have a fairly unique implementation of this function that I should explain.
+    For this, I create a vector of maps from int to HoldEmRank.  This vector will hold two maps,
+    the first is for the first player and the second for the second player.  This vector will be
+    created in a helper function called `find_group_rank` where the "group" represents a hand rank
+    with multiple cards of the same rank, such as pair, two pair, three of a kind, etc.
+    The function will fill the maps with an integer representing the hand rank (for instance, 2 for pair)
+    mapped to the rank of that group.
+- In the cases where groups are the same rank and it falls to finding the highest other card,
+    I created a function, `find_highest_card`, that will loop through all of the cards
+    to find the highest card not in the other player_names hand.  This is the fallback case for
+    all places where I am instructed to do so, as well as with the cases where we need to
+    find the highest card, such as with flushes and straights.
+- There are a number of places that I do use hardcoded numbers, but I felt the context of
+    where they are used makes it clear why that number is being used and making a constant would not be beneficial.
+- A note that I included in comments and want to additionally include here-- because of my 
+    implementation using a map, there is a conflict with the two pairs hand rank, which I resolved
+    by making the larger ranked pair map from an int of 3 which is indicated in comments in a number of places in the code.
+
+### HoldEm Board Dealing
+
+- While testing my code and making things look nice, I decided to implement a new feature
+    based on how cards are normally dealt in poker, by burning a card from the deck before
+    dealing cards to the board.  This is overall doing nothing, but I thought it would be a fun addition.
+- I also added some other helpful printouts to make it feel more like a game is being played.
+
+
 ## Notes
 
 - When using or not using auto could be a good thing to note in here.
-
-___
-
-___
-
-# CSE428S-Lab1 OLD README
-
---- 
-
-## Name: Nick Cochran
-
-### Email: c.nick@wustl.edu
-
-
-## Errors
-
-I ran into a number of errors while working on this code.  Two that were particularly challenging
-were linker errors which were caused by forgetting to remove the print method from the Deck class
-and also forgetting to change Deck to a template header that includes the source.  I also ran into 
-errors with the >> operator a few times that I fixed fairly quickly each time, but it took some
-research to make sure I was using it right.  I also forgot to put a reference in the >> operator 
-which took a bit to find and was fairly confusing as to why it wasn't working. 
-
-# Trial Runs
-
-I ran the program many times.  I started with Pinochle, first checking that it adequately checks
-for the right amount of players, and then making sure the program was running correctly, with all
-shuffling and cards given out making sense.  I then did the same with HoldEm with many different
-runs checking each of those invariants.  All of these passed or were quickly fixed (the last error in that section).

@@ -16,6 +16,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <map>
 
 using std::ostream;
 using std::vector; using std::string;

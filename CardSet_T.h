@@ -15,6 +15,7 @@ template <typename Suit, typename Rank> class CardSet {
  public:
     CardSet() = default;
     CardSet(const CardSet<Suit, Rank>& card_set);
+    CardSet& operator=(const CardSet<Suit, Rank>&) = default;
     void print(ostream& ost, size_t size);
     CardSet& operator>>(CardSet<Suit, Rank>& card_set);
 
