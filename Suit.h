@@ -1,8 +1,7 @@
 /*
  * Suit.h
- *
- * Nick Cochran
- * email: c.nick@wustl.edu
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
  * This header file contains declarations for the Suit enum and relevant operators.
  *

@@ -1,11 +1,9 @@
 /*
  * lab2.cpp
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
- * Nick Cochran
- * email: c.nick@wustl.edu
- *
- * This source file contains the main function to run the code.
- *
+ * This source file contains the main function to run the code and helpers.
  */
 
 #include "includes.h"
@@ -14,14 +12,21 @@
 #include "HoldEmGame.h"
 #include <memory>
 
-using namespace std;
+using std::shared_ptr; using std::make_shared;
 
 int main(int argc, const char **argv);
 int usage(const char **argv);
 shared_ptr<Game> create(int argc, const char **argv);
 
 
-// main function to run the code
+//
+/**
+ * The main function to run the code.
+ *
+ * @param argc the length of the input array
+ * @param argv the input array of strings
+ * @return an integer representing success or failure values
+ */
 int main(int argc, const char **argv) {
 
     if (argc < 2) {
@@ -55,13 +60,24 @@ int main(int argc, const char **argv) {
 
 }
 
-// usage function to return with bad arguments
+/**
+ * A usage function to run/return with bad arguments.
+ *
+ * @param argv the input array of strings
+ * @return an integer representing an invalid input
+ */
 int usage(const char **argv) {
     cout << "Usage: " << argv[PROGRAM_NAME] << " <\033[3mPinochle\033[0m | \033[3mHoldEm\033[0m> {player1}, {player2}, ..." << endl;
     return INVALID_PROGRAM_ARGUMENTS;
 }
 
-// create function to create a game based on the given arguments
+/**
+ * Creates a game based on the given arguments.
+ *
+ * @param argc the length of the input array
+ * @param argv the input array of strings
+ * @return a shared pointer to an object of type Game
+ */
 shared_ptr<Game> create(int argc, const char **argv) {
     shared_ptr<Game> game;
 

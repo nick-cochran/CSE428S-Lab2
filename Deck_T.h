@@ -1,11 +1,10 @@
 /*
- * Deck.h
+ * Deck_T.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
- * Nick Cochran
- * email: c.nick@wustl.edu
- *
- * This header file contains the abstract Deck class to be implemented elsewhere.
- *
+ * This header file contains the declaration for the Deck template class
+ *      which publicly inherits CardSet and can be inherited itself.
  */
 
 #ifndef LAB0_DECK_H

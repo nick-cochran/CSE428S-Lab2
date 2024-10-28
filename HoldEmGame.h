@@ -1,6 +1,13 @@
-//
-// Created by Nick Cochran on 9/29/24.
-//
+/*
+ * HoldEmGame.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
+ *
+ * This header file contains the HoldEmGame class and its functions as well as
+ *      enums for the state of the game and the ranks of texas hold em hands.
+ *      Inside the HoldEmGame class, there is also a player struct for which
+ *      there is a < operator and helper functions.
+ */
 
 #ifndef LAB1_HOLDEMGAME_H
 #define LAB1_HOLDEMGAME_H

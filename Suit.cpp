@@ -1,18 +1,20 @@
 /*
  * Suit.cpp
- *
- * Nick Cochran
- * email: c.nick@wustl.edu
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
  * This source file contains the definitions for the operators for the Suit enum.
- *
  */
 
 #include "Suit.h"
 
-using namespace std;
-
-
+/**
+ * The << operator to output a string representing the Suit.
+ *
+ * @param ost a reference to an ostream object
+ * @param suit a const reference to a Suit
+ * @return the passed in ostream object
+ */
 ostream& operator<<(ostream &ost, const Suit &suit) {
     switch (suit) {
         case Suit::clubs:
@@ -33,7 +35,13 @@ ostream& operator<<(ostream &ost, const Suit &suit) {
     }
 }
 
-// prefix increment operator for Suit enum
+//
+/**
+ * Prefix ++ operator for the Suit enum to move to the next suit.
+ *
+ * @param suit a reference to a Suit
+ * @return the incremented Suit that was passed in
+ */
 Suit& operator++(Suit& suit) {
     switch (suit) {
         case Suit::clubs:

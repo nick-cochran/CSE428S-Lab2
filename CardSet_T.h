@@ -1,6 +1,10 @@
-//
-// Created by Nick Cochran on 9/22/24.
-//
+/*
+ * CardSet_T.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
+ *
+ * This header file contains the declaration of the CardSet template base class and its functions.
+ */
 
 #ifndef LAB1_CARDSET_H
 #define LAB1_CARDSET_H
@@ -18,7 +22,6 @@ template <typename Suit, typename Rank> class CardSet {
     CardSet& operator=(const CardSet<Suit, Rank>&) = default;
     void print(ostream& ost, size_t size);
     CardSet& operator>>(CardSet<Suit, Rank>& card_set);
-
     // public function to return pointer to member variable cards which is protected
     static vector< Card<Suit, Rank> > CardSet::* get_cards() { return &CardSet::cards; }
     bool is_empty();

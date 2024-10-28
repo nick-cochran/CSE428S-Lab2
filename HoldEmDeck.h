@@ -1,12 +1,10 @@
 /*
  * HoldEmDeck.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
- * Nick Cochran
- * email: c.nick@wustl.edu
- *
- * This header file contains declarations for the HoldEmDeck class which inherits the Deck class.  This
- *   contains important operators and in the class: a cards vector, a constructor, and a print function.
- *
+ * This header file contains declarations for the HoldEmDeck class which inherits the Deck class
+ *      and an enum of the appropriate card ranks for a game of Texas Hold Em and the << ++prefix operators.
  */
 
 #ifndef LAB0_HOLDEMDECK_H

@@ -1,6 +1,10 @@
-//
-// Created by Nick Cochran on 9/28/24.
-//
+/*
+ * Game.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
+ *
+ * This header file contains the declaration for the Game abstract base class.
+ */
 
 #ifndef LAB1_GAME_H
 #define LAB1_GAME_H
@@ -8,8 +12,6 @@
 #include "includes.h"
 
 const int FIRST_PLAYER = 2;
-
-// part 11
 
 // abstract Game class
 class Game {

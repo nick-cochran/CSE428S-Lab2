@@ -2,7 +2,7 @@
 
 ### Name: Nick Cochran
 
-#### Email: c.nick@wustl.edu
+### Email: c.nick@wustl.edu
 
 ---
 
@@ -186,6 +186,8 @@
 - I also added some other helpful printouts to make it feel more like a game is being played.
 
 
-## Notes
+### Use of `auto`
 
-- When using or not using auto could be a good thing to note in here.
+- I used auto in a few places in my program.  I tried to avoid using it in most places,
+    but I did use it occasionally in for loops or when creating variables where the type
+    is pretty clear, usually with variables that are meant to make things cleaner.

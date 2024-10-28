@@ -1,6 +1,11 @@
-//
-// Created by Nick Cochran on 9/29/24.
-//
+/*
+ * PinochleGame.h
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
+ *
+ * This header file contains the PinochleGame class and its functions as well as
+ *      an enum for the melds of Pinochle hands and an << operator.
+ */
 
 #ifndef LAB1_PINOCHLEGAME_H
 #define LAB1_PINOCHLEGAME_H

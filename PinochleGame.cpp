@@ -1,6 +1,11 @@
-//
-// Created by Nick Cochran on 9/29/24.
-//
+/*
+ * PinochleGame.cpp
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
+ *
+ * This source file contains definitions for the PinochleGame class and its functions
+ *      as well as for the melds enum's << operator.
+ */
 
 #include "PinochleGame.h"
 
@@ -10,8 +15,11 @@ const unsigned int PinochleGame::meld_values[] =
           150, 300, 400, 600, 800, 1000, 1500 };
 
 
-
-// play function to play a game of Pinochle
+/**
+ * Play a game of Pinochle.
+ *
+ * @return an int representing success.
+ */
 int PinochleGame::play() {
     while(true) {
         deck.shuffle();
@@ -26,7 +34,12 @@ int PinochleGame::play() {
     }
 }
 
-// Constructor for PinochleGame
+/**
+ * Constructor for the PinochleGame class, uses the inherited Game constructor.
+ *
+ * @param argc the length of the input array
+ * @param argv the input array of strings
+ */
 PinochleGame::PinochleGame(int argc, const char **argv): Game(argc, argv) {
 
     for(int i = FIRST_PLAYER; i < argc; ++i) {
@@ -35,7 +48,9 @@ PinochleGame::PinochleGame(int argc, const char **argv): Game(argc, argv) {
     }
 }
 
-// deal out the cards to all player_names
+/**
+ * deal out the cards to all players
+ */
 void PinochleGame::deal() {
     // deal a packet to each player until deck is empty
     while(!deck.is_empty()) {
@@ -45,6 +60,11 @@ void PinochleGame::deal() {
     }
 }
 
+/**
+ * print the players' hands and melds they can make
+ *
+ * @param ost a reference to an ostream object
+ */
 void PinochleGame::print_hands_and_melds(ostream &ost) {
     for(long unsigned int i = 0; i < hands.size(); ++i) {
 
@@ -63,12 +83,21 @@ void PinochleGame::print_hands_and_melds(ostream &ost) {
     }
 }
 
+/**
+ * calls the deck's collect method on all players' hands
+ */
 void PinochleGame::collect_cards() {
     for(auto& hand : hands) {
         deck.collect(hand);
     }
 }
 
+/**
+ * Finds the melds in a player's hand.
+ *
+ * @param hand a reference to a player's hand
+ * @param melds a reference to a vector to put the melds in
+ */
 void PinochleGame::suit_independent_eval(const CardSet<Suit, PinochleRank> &hand, vector<PinochleMeld>& melds) {
 
     CardSet<Suit, PinochleRank> hand_copy(hand);
@@ -143,7 +172,7 @@ void PinochleGame::suit_independent_eval(const CardSet<Suit, PinochleRank> &hand
         }
     }
 
-    // pinochle check
+    // check for pinochle
     int jack_diamonds = 0; int queen_spades = 0;
     for(Suit suit : jacks) {
         if(suit == Suit::diamonds) {
@@ -162,7 +191,13 @@ void PinochleGame::suit_independent_eval(const CardSet<Suit, PinochleRank> &hand
     }
 }
 
-// helper function to see if a vector of suits contains all of the suits
+//
+/**
+ * Helper to see if a vector of suits contains all four suits.
+ *
+ * @param suit_vec a vector of Suits
+ * @return true if all suits are present, otherwise false
+ */
 bool PinochleGame::find_all_suits(vector<Suit>& suit_vec) {
     bool clubs = false;
     bool diamonds = false;
@@ -184,9 +219,14 @@ bool PinochleGame::find_all_suits(vector<Suit>& suit_vec) {
     return clubs && diamonds && hearts && spades;
 }
 
-
-// placed at the end because it is large and fairly intuitive
-// overload the << operator to print a PinochleMeld according to its value
+// placed at the end because it is annoyingly large and fairly intuitive
+/**
+ * Overload the << operator to print a PinochleMeld according to its value.
+ *
+ * @param ost a reference to an ostream object
+ * @param meld a const reference to a meld
+ * @return the passed in ostream object
+ */
 ostream& operator<<(ostream& ost, const PinochleMeld& meld) {
     switch(meld) {
         case PinochleMeld::dix:

@@ -1,8 +1,7 @@
 /*
  * includes.h
- *
- * Nick Cochran
- * email: c.nick@wustl.edu
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
  * This header file contains include statements and constants used in most files.
  *

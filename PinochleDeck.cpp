@@ -1,19 +1,17 @@
 /*
  * PinochleDeck.cpp
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
- * Nick Cochran
- * email: c.nick@wustl.edu
- *
- * This source file contains the definitions for the PinochleDeck class and also operators for the rank enum.
- *
+ * This source file contains definitions for the PinochleDeck class which inherits the Deck class
+ *      and the Pinochle card ranks enum's operators.
  */
 
 #include "PinochleDeck.h"
 
-using namespace std;
-
-
-// pushes back cards into the cards vector for the PinochleDeck class
+/**
+ * A PinochleDeck Constructor which pushes back cards into the cards vector.
+ */
 PinochleDeck::PinochleDeck() {
     for(Suit suit = firstSuit; suit != Suit::undefined; ++suit) {
         for(PinochleRank rank = PinochleRank::nine; rank != PinochleRank::undefined; ++rank) {
@@ -29,7 +27,13 @@ PinochleDeck::PinochleDeck() {
     }
 }
 
-// overloads the << operator for the PinochleRank enum
+/**
+ * Overloads the << operator for the PinochleRank enum.
+ *
+ * @param ost a reference to an ostream object
+ * @param pRank a const reference to the pinochle rank
+ * @return the passed in ostream object
+ */
 ostream& operator<<(ostream& ost, const PinochleRank& pRank) {
     switch (pRank) {
         case PinochleRank::nine:
@@ -56,7 +60,12 @@ ostream& operator<<(ostream& ost, const PinochleRank& pRank) {
     }
 }
 
-// overloads the ++ prefix operator for the PinochleRank enum
+/**
+ * Overloads the ++ prefix operator for the PinochleRank enum.
+ *
+ * @param pRank a reference to the pinochle rank
+ * @return the incremented pinochle rank
+ */
 PinochleRank& operator++(PinochleRank& pRank) {
     switch (pRank) {
         case PinochleRank::nine:

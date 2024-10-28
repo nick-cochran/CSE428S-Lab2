@@ -3,7 +3,8 @@
  * Author: Nick Cochran
  * Email: c.nick@wustl.edu
  *
- * This header file contains declarations for the Card struct and a << operator for it.
+ * This header file contains the declarations for the Card struct, a << operator for it,
+ *      and two less than functions to compare cards.
  */
 
 #ifndef LAB0_CARD_T_H
@@ -22,10 +23,8 @@ template<typename Suit, typename Rank> struct Card {
 template<typename Suit, typename Rank>
 ostream& operator<<(ostream& ost, const Card<Suit, Rank>& card);
 
-// lab 2 part 7
 template<typename Suit, typename Rank>
 bool lt_rank_suit(const Card<Suit, Rank>& card1, const Card<Suit, Rank>& card2);
-
 template<typename Suit, typename Rank>
 bool lt_suit_rank(const Card<Suit, Rank>& card1, const Card<Suit, Rank>& card2);
 

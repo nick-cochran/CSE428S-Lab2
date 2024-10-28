@@ -1,17 +1,18 @@
 /*
  * HoldEmDeck.cpp
+ * Author: Nick Cochran
+ * Email: c.nick@wustl.edu
  *
- * Nick Cochran
- * email: c.nick@wustl.edu
- *
- * This source file contains the definitions for the HoldEmDeck class and related operators for the rank enum.
- *
+ * This source file contains the definitions for the HoldEmDeck class and an enum
+ *      of the appropriate card ranks for a game of Texas Hold Em and the << ++prefix operators.
  */
 
 #include "HoldEmDeck.h"
 
 
-// pushes back cards into the cards vector for the HoldEmDeck class
+/**
+ * HoldEmDeck Constructor which pushes back cards into the cards vector to create the deck.
+ */
 HoldEmDeck::HoldEmDeck() {
     for(Suit suit = firstSuit; suit != Suit::undefined; ++suit) {
         for(HoldEmRank rank = HoldEmRank::two; rank != HoldEmRank::undefined; ++rank) {
@@ -20,8 +21,13 @@ HoldEmDeck::HoldEmDeck() {
     }
 }
 
-
-// overloads the << operator for the HoldEmRank enum
+/**
+ * Overloads the << operator for the HoldEmRank enum to print a string representation.
+ *
+ * @param ost a reference to an ostream object
+ * @param heRank the passed in HoldEmRank by reference
+ * @return the passed in ostream object reference
+ */
 ostream& operator<<(ostream& ost, const HoldEmRank& heRank) {
     switch (heRank) {
         case HoldEmRank::two:
@@ -69,36 +75,41 @@ ostream& operator<<(ostream& ost, const HoldEmRank& heRank) {
     }
 }
 
-// overloads the ++ prefix operator for the HoldEmRank enum
-HoldEmRank& operator++(HoldEmRank& pRank) {
-    switch (pRank) {
+/**
+ * Overloads the ++ prefix operator for the HoldEmRank enum to increment to the next card rank.
+ *
+ * @param heRank a reference to a HoldEmRank object
+ * @return the incremented HoldEmRank object
+ */
+HoldEmRank& operator++(HoldEmRank& heRank) {
+    switch (heRank) {
         case HoldEmRank::two:
-            return pRank = HoldEmRank::three;
+            return heRank = HoldEmRank::three;
         case HoldEmRank::three:
-            return pRank = HoldEmRank::four;
+            return heRank = HoldEmRank::four;
         case HoldEmRank::four:
-            return pRank = HoldEmRank::five;
+            return heRank = HoldEmRank::five;
         case HoldEmRank::five:
-            return pRank = HoldEmRank::six;
+            return heRank = HoldEmRank::six;
         case HoldEmRank::six:
-            return pRank = HoldEmRank::seven;
+            return heRank = HoldEmRank::seven;
         case HoldEmRank::seven:
-            return pRank = HoldEmRank::eight;
+            return heRank = HoldEmRank::eight;
         case HoldEmRank::eight:
-            return pRank = HoldEmRank::nine;
+            return heRank = HoldEmRank::nine;
         case HoldEmRank::nine:
-            return pRank = HoldEmRank::ten;
+            return heRank = HoldEmRank::ten;
         case HoldEmRank::ten:
-            return pRank = HoldEmRank::jack;
+            return heRank = HoldEmRank::jack;
         case HoldEmRank::jack:
-            return pRank = HoldEmRank::queen;
+            return heRank = HoldEmRank::queen;
         case HoldEmRank::queen:
-            return pRank = HoldEmRank::king;
+            return heRank = HoldEmRank::king;
         case HoldEmRank::king:
-            return pRank = HoldEmRank::ace;
+            return heRank = HoldEmRank::ace;
         case HoldEmRank::ace:
-            return pRank = HoldEmRank::undefined;
+            return heRank = HoldEmRank::undefined;
         default:
-            return pRank = HoldEmRank::undefined;
+            return heRank = HoldEmRank::undefined;
     }
 }
